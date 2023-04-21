@@ -15,7 +15,7 @@ module ActiveRecord
         error = assert_raises(SerializationTypeMismatch) do
           coder.dump("a")
         end
-        assert_equal %{can't dump `tags`: was supposed to be a Array, but was a String. -- "a"}, error.to_s
+        assert_equal %{can't dump `tags`: was supposed to be an Array, but was a String. -- "a"}, error.to_s
       end
 
       def test_type_mismatch_on_different_classes
@@ -23,7 +23,7 @@ module ActiveRecord
         error = assert_raises(SerializationTypeMismatch) do
           coder.load "--- foo"
         end
-        assert_equal %{can't load `tags`: was supposed to be a Array, but was a String. -- "foo"}, error.to_s
+        assert_equal %{can't load `tags`: was supposed to be an Array, but was a String. -- "foo"}, error.to_s
       end
 
       def test_nil_is_ok
